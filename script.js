@@ -1,8 +1,8 @@
 //////// Line 41 >> Sets background colour, BUT overlays what has already been drawn
 //////// Set a cmd-z option? (how??)
 
-// Set const "canvas" to be the canvas div with id "draw"
-const canvas = document.querySelector("#draw");
+// Set const "canvas" to be the canvas div
+const canvas = document.querySelector("#drawingArea");
 // Set context to be 2d (?), getting the data from the "canvas" variable
 const ctx = canvas.getContext("2d");
 
@@ -26,7 +26,6 @@ ctx.lineCap = 'round'; // round / square / butt
     // ctx.lineWidth = 10;
 // Set the colour to combine with existing colour when doubling over previous brush strokes
 ctx.globalCompositeOperation = 'source-over';
-// console.log(ctx.globalCompositeOperation);
 
 //// Set variables as 'let', as the values of these variables will change when moving the mouse/painting on the canvas
 let isDrawing = false;  // Set default state to be not-drawing (ie when not pressing down the mouse)
@@ -34,8 +33,8 @@ let lastX = 0;
 let lastY = 0;
 let hue = 0;
 let direction = true;
-let newColor = "tomato";
-let newBackground = "white";
+let newColor = "#000";
+let newBackground = "#fff";
 let newWidth = 10;
 
 const colorChange = document.getElementById('colorSelector');
@@ -86,29 +85,23 @@ brushEffectList.addEventListener('change', (e) => {
 // Enable colour effect choices
 
 const effectList = document.getElementById('effectList');
-// console.log(effectList);
 
 const effectOptions = document.querySelectorAll('#effectList input');
-// console.log(effectOptions);
 
 const nOfEffects = effectOptions.length;
 const effectValues = document.querySelectorAll('.effectValue');
-// console.log(effectValues);
 
 // Listen for mousedown/clicking within the list of effect options
 effectList.addEventListener('change', (e) => {
 
   // When click within the list >> loop through all items within the list
   for (i = 0; i < nOfEffects; i++) {
-    // console.log(effectOptions[i].checked);
 
     // check whether they were the option that was chosen
     // if yes >> set 'ctx.globalCompositeOperation' to that value
     if (effectOptions[i].checked === true) {
-      // console.log(effectOptions[i].value);
 
       ctx.globalCompositeOperation = effectOptions[i].value;
-      // console.log(ctx.globalCompositeOperation);
     }
   }
 });
@@ -123,6 +116,8 @@ effectList.addEventListener('change', (e) => {
 function draw(e) {
   if(!isDrawing) return;  // if currently not-drawing, stop the function from running
 
+  // if currently drawing, execute the following:
+
   ctx.strokeStyle = newColor;
   // `hsl(${hue}, 100%, 50%)`
   ctx.lineWidth = newWidth;
@@ -133,24 +128,22 @@ function draw(e) {
   ctx.moveTo(lastX, lastY);
   ctx.lineTo(e.offsetX, e.offsetY);
   ctx.stroke();
+  [lastX, lastY] = [e.offsetX, e.offsetY];    // is equivalent to:  lastX = e.offsetX;  AND lastY = e.offsetY;
 
-  // lastX = e.offsetX;
-  // lastY = e.offsetY;
-  // is equivalent to:
-  [lastX, lastY] = [e.offsetX, e.offsetY];
-
-  hue++;
-  if(hue >= 360) {
-    hue = 0;
-  }
+  // To create rainbow effect in the brush colour:
+  // hue++;
+  // if(hue >= 360) {
+  //   hue = 0;
+  // }
 }
 
 // Add event listeners to tell the [program] when drawing is happening and not
 canvas.addEventListener('mousedown', (e) => { // when mouse-down >> means it's drawing on the canvas
   isDrawing = true;
   [lastX, lastY] = [e.offsetX, e.offsetY];
+  console.log(lastX);
+  console.log(e.offsetX);
 });
 canvas.addEventListener('mousemove', draw);
-// canvas.addEventListener('mousedown', () => isDrawing = true);
 canvas.addEventListener('mouseup', () => isDrawing = false);  // when mouse-up >> means no longer drawing on the canvas
 canvas.addEventListener('mouseout', () => isDrawing = false); // // when mouse is outside of the canvas >> means no longer drawing on the canvas
