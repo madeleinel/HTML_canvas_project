@@ -4,7 +4,9 @@
 // Set const "canvas" to be the canvas div
 const canvas = document.querySelector("#drawingArea");
 // Set context to be 2d (?), getting the data from the "canvas" variable
-const ctx = canvas.getContext("2d");
+let ctx = canvas.getContext("2d");
+
+let temp = "";
 
 // Set the canvas to span the entire window
 // Have to set this in order to enable drawing functions below
@@ -139,11 +141,20 @@ function draw(e) {
 
 // Add event listeners to tell the [program] when drawing is happening and not
 canvas.addEventListener('mousedown', (e) => { // when mouse-down >> means it's drawing on the canvas
+  temp = ctx.getImageData(0,0,620,620);   // Save the next-to-last version of the canvas to the 'temp' variable
+      // Save each 'temp' version to the backup array
   isDrawing = true;
   [lastX, lastY] = [e.offsetX, e.offsetY];
-  console.log(lastX);
-  console.log(e.offsetX);
 });
 canvas.addEventListener('mousemove', draw);
-canvas.addEventListener('mouseup', () => isDrawing = false);  // when mouse-up >> means no longer drawing on the canvas
-canvas.addEventListener('mouseout', () => isDrawing = false); // // when mouse is outside of the canvas >> means no longer drawing on the canvas
+canvas.addEventListener('mouseup', () => isDrawing = false);// when mouse-up >> means no longer drawing on the canvas
+canvas.addEventListener('mouseout', () => isDrawing = false);// when mouse-up >> means no longer drawing on the canvas
+
+const undo = document.getElementById('undo');
+
+undo.addEventListener('click', () => {
+  ctx.clearRect(0, 0, 620, 620);    // Clear the canvas
+  ctx.putImageData(temp, 0, 0);     // Fill the canvas with the content of the 'temp' variable
+      // Fill the canvas with the content of the top x of the 'backup' array
+      // Remove the top x of the 'backup' array
+});
