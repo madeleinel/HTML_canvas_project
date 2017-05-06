@@ -39,7 +39,7 @@ let strokeWidth = 10;    // Set default width of the brushstroke to match the de
 // For the colour and width of the brush strokes:
 const colorChange = document.getElementById("colorSelector");
 const widthChange = document.getElementById("widthSelector");
-// For the brush edge effect:
+// For the brush shape effect:
 const brushEffectList = document.getElementById("brushEffectList");
 const brushEffectOptions = document.querySelectorAll("#brushEffectList input");
 const numOfBrushEffects = brushEffectOptions.length;
@@ -54,9 +54,9 @@ const backgroundChange = document.getElementById("backgroundSelector");
 let canvasStorage;
 // Define the variable that will store the background image data
 let backgroundStorage;
-// Define the undo button
+// Define the undo, redo and save buttons
 const undo = document.getElementById("undo");
-// Define the save button
+const redo = document.getElementById("redo");
 const save = document.getElementById("save");
 
 //////// DRAWING FUNCTIONS ////////
@@ -82,7 +82,7 @@ function draw(e) {
 colorChange.addEventListener("change", (e) => color = e.srcElement.value);
 // Define function to enable changing the width of brush strokes
 widthChange.addEventListener("change", (e) => strokeWidth = e.srcElement.value);
-// Define function to enable changing the brush edge effect
+// Define function to enable changing the brush shape effect
 brushEffectList.addEventListener("change", (e) => {
   for (i = 0; i < numOfBrushEffects; i++) {   // Loop through the list of HTML input elements
     if (brushEffectOptions[i].checked === true) {   // Checked each option to see whether it's been checked
@@ -130,6 +130,12 @@ canvas.addEventListener("mouseout", () => isDrawing = false);
 undo.addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.putImageData(canvasStorage, 0, 0);
+});
+
+// Enable redo button
+// SET THIS UP
+redo.addEventListener("click", () => {
+  console.log("Revert the latest undo action");
 });
 
 // Enable save button
