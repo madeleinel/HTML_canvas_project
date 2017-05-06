@@ -89,11 +89,20 @@ ul li {
 /*////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////*/
-/* Styling the canvas */
-/* Need to define the canvas size & position within script.js to enable drawing within the desired area */
+/* Styling the canvases */
+/* The canvases' size & position within script.js to enable drawing within the desired area */
 
 canvas {
   position: fixed;
 }
-/* Done styling the canvas */
+
+/* Set the drawing canvas to be on top of the background canvas */
+#drawingArea {
+  z-index: 99;
+}
+
+#drawingBackground {
+  z-index: 1;
+}
+/* Done styling the canvases */
 /*////////////////////////////////////////////////*/
