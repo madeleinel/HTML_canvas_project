@@ -22,22 +22,16 @@
       <button id="save">Save</button>
     </div>
 
-    <!-- <div class="selectorArea" id="backgroundSelectorArea">
-      <label for="backgroundColour">Background colour: </label>
-      <input type="color" id="backgroundSelector" name="backgroundColour" value="#ffffff"></br>
-    </div>
-
-    <div class="selectorArea" id="colorSelectorArea">
-      <label for="colour">Brush colour: </label>
-      <input type="color" id="colorSelector" name="brushColour" value="#000000"></br>
-    </div> -->
-
     <div class="selectorArea" id="colorSelectorArea">
       <!-- <h2>Colour</h2> -->
-      <label for="backgroundColour">Background: </label>
-      <label for="colour">Brush: </label>
-      <input type="color" id="backgroundSelector" name="backgroundColour" value="#ffffff"><span></span>    <!-- Colour values specified does not affect the brush colour, just the colour of the input field -->
-      <input type="color" id="colorSelector" name="brushColour" value="#000000"><span></span>    <!-- Colour values specified does not affect the background colour, just the colour of the input field -->
+      <div class="column">
+        <label for="backgroundColour">Background: </label>
+        <input type="color" id="backgroundSelector" name="backgroundColour" value="#ffffff"><span></span>    <!-- Colour values specified does not affect the brush colour, just the colour of the input field -->
+      </div>
+      <div class="column">
+        <label for="colour">Brush: </label>
+        <input type="color" id="colorSelector" name="brushColour" value="#000000"><span></span>    <!-- Colour values specified does not affect the background colour, just the colour of the input field -->
+      </div>
     </div>
 
     <div class="selectorArea" id="lineWidthSelectorArea">

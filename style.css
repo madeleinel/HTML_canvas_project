@@ -37,6 +37,15 @@ h1 {
   overflow-y: scroll;
 }
 
+.column {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 #options {
   text-align: center;
 }
@@ -44,8 +53,22 @@ h1 {
 .selectorArea {
   background-color: #b0cbdb;
   margin: 1em 0;
-  padding: 0.5em;
+  padding: 0.8em 0.5em 0.5em 0.8em;
   max-width: 100%;
+}
+
+#colorSelectorArea {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 1em;
 }
 
 button {
@@ -67,7 +90,9 @@ button:active {
 
 label {
   /*border: 1px solid red;*/
-  margin-right: 2em;
+  font-size: 1.2em;
+  margin: 0 0 0 0.2em;
+  /*margin-right: 2em;*/
 }
 
 input {
@@ -79,21 +104,13 @@ em {
   margin-left: 1.5em;
 }
 
-/* Styling the colour chooser */
-/*input[type=color] {
-  border: none;
-  background: none;
-  height: 4em;
-  width: 100%;
-}*/
-
 input[type=color] {
   opacity: 0;
   display: inline-block;
   border: none;
   background: none;
   height: 3rem;
-  width: 45%;
+  width: 7rem;
   position: relative;
   z-index: 99;
 }
@@ -103,13 +120,10 @@ input[type=color]:focus {
 }
 
 input[type=color]+span {
-  display: inline-block;
   height: 2.4rem;
-  width: 38%;
+  width: 6.6rem;
   border-radius: 0.25em;
-  margin-left: -5.5em;
-  margin-top: 0.3em;
-  position: absolute;
+  margin: -2.8em 0 0 0.3em;
   z-index: 1;
 }
 
