@@ -21,12 +21,12 @@
 
     <div class="selectorArea" id="backgroundSelectorArea">
       <label for="backgroundColour">Background colour: </label>
-      <input type="color" id="backgroundSelector" name="backgroundColour"></br>
+      <input type="color" id="backgroundSelector" name="backgroundColour" value="#ffffff"></br>    <!-- Colour values specified does not affect the brush colour, just the colour of the input field -->
     </div>
 
     <div class="selectorArea" id="colorSelectorArea">
       <label for="colour">Brush colour: </label>
-      <input type="color" id="colorSelector" name="brushColour"></br>
+      <input type="color" id="colorSelector" name="brushColour" value="#000000"></br>    <!-- Colour values specified does not affect the background colour, just the colour of the input field -->
     </div>
 
     <div class="selectorArea" id="lineWidthSelectorArea">
@@ -37,22 +37,24 @@
     <div class="selectorArea" id="brushEffectSelectorArea">
       <label for="lineStyle">Brush style: </label>
       <ul id="brushEffectList">
-        <li><input type="radio" class="brushValue" name="brushEffect" value="round" checked>Round (Default)</li>
-        <li><input type="radio" class="brushValue" name="brushEffect" value="square">Square</li>
-        <li><input type="radio" class="brushValue" name="brushEffect" value="butt">Fan</li>
+        <li><input type="radio" class="brushValue" name="brushEffect" value="round" checked><span></span><em>Round (Default)</em></li>
+        <li><input type="radio" class="brushValue" name="brushEffect" value="square"><span></span><em>Square</em></li>
+        <li><input type="radio" class="brushValue" name="brushEffect" value="butt"><span></span><em>Fan</em></li>
       </ul>
     </div>
 
     <div class="selectorArea" id="effectSelectorArea">
       <label for="effect">Colour effect: </label>
       <ul id="effectList">
-        <li><input type="radio" class="effectValue" name="effect" value="source-over" checked>Source-Over (Default)</li>
-        <li><input type="radio" class="effectValue" name="effect" value="exclusion">Exclusion</li>
-        <li><input type="radio" class="effectValue" name="effect" value="darken">Darken</li>
-        <li><input type="radio" class="effectValue" name="effect" value="lighten">Lighten</li>
+        <li><input type="radio" class="effectValue" name="effect" value="source-over" checked><span></span><em>Source-Over (Default)</em></li>
+        <li><input type="radio" class="effectValue" name="effect" value="exclusion"><span></span><em>Exclusion</em></li>
+        <li><input type="radio" class="effectValue" name="effect" value="darken"><span></span><em>Darken</em></li>
+        <li><input type="radio" class="effectValue" name="effect" value="lighten"><span></span><em>Lighten</em></li>
         <!-- See effects at https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation -->
       </ul>
     </div>
+
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
   </div>
 

@@ -29,15 +29,33 @@ h1 {
 /* Styling the controls section */
 
 #controls {
-  background-color: papayawhip;
+  /*background-color: papayawhip;*/
+  background-color: #edf2f9;
   position: fixed;
-  top: 0;
+  top: 18.4vh;
   left: 0;
-  padding: 9em 0;
   height: 100%;
-  /*min-width: 20vw;*/
   max-width: 20vw;
   z-index: -99;
+  overflow-y: scroll;
+}
+
+button {
+  border: none;
+  border-radius: 0.25em;
+  background-color: #fff;
+  min-width: 4em;
+  padding: 0.5em;
+  margin: 0 0.5em;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  outline: #bacfe8;
 }
 
 .selectorArea {
@@ -50,8 +68,11 @@ h1 {
 }
 
 label {
-  border: 0px solid blue;
+  /*border: 1px solid blue;*/
   display: inline-block;
+  background-color: #fff;
+  width: 15vw;
+  padding: 1em;
 }
 
 input {
@@ -63,9 +84,8 @@ input {
 input[type=color] {
   background: none;
   border: none;
-  /*border-radius: 50%;*/
   height: 4rem;
-  width: 4rem;
+  width: 100%;
   padding: 0 0 0 0.2rem;
   transform: translateY(0.3rem)
 }
@@ -76,13 +96,50 @@ input[type=color]:focus {
 
 /* Styling the brush width chooser */
 input[type=range] {
-  /*msaamsl;*/
+  -webkit-appearance: none;
 }
 
 /* Styling the effect list */
+ul {
+  margin: 0 auto;
+}
+
 ul li {
   list-style: none;
+  text-align: left;
   margin-left: -3em;
+  margin-top: 0.5em;
+  background-color: #bacfe8;
+  padding: 0.5em;
+  width: 14vw;
+}
+
+input[type=radio] {
+  opacity: 0;
+  position: absolute;
+  z-index: 99;
+}
+
+span {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 0.25em;
+  /*margin-right: 0.5em;*/
+  background-color: #fff;
+  position: absolute;
+  z-index: 1;
+}
+
+em {
+  font-style: normal;
+  margin-left: 1.5em;
+}
+
+input[type="radio"]:checked+span:before {
+  content: "✓";
+  margin-left: 0.15em;
+  /*margin-bottom: 1em;*/
 }
 
 /* Done styling the controls */
