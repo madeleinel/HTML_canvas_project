@@ -22,7 +22,7 @@ background.style.left = "20vw";
 
 // Set the default brushstroke values
 // Don't need to set these for the background canvas, as will not be drawing on that canvas
-// ctx.lineJoin = "round";   // Set the default style of brushstoke joints  // round / square / butt / miter (default)
+// ctx.lineJoin = "round";   // Set the default style of brushstoke joints  // round / square / butt / miter (default)    // Remove this line? Setting it to a different value doesn't seem to have an effect
 ctx.lineCap = "round";    // Set the default style of brushstoke ends  // round / square / butt
 ctx.globalCompositeOperation = "source-over";   // Set the default brushstroke effect
 
@@ -51,9 +51,9 @@ const numOfColorEffects = colorEffectOptions.length;
 const backgroundChange = document.getElementById("backgroundSelector");
 
 // Define the variable that will store the brushstroke image data
-let canvasStorage;
+let canvasStorage = [];
 // Define the variable that will store the background image data
-let backgroundStorage;
+// let backgroundStorage;   // Use this, and enable undoing background colour change, as well?
 // Define the undo, redo and save buttons
 const undo = document.getElementById("undo");
 const redo = document.getElementById("redo");
@@ -110,8 +110,8 @@ backgroundChange.addEventListener("change", (e) => {
 
 // Start drawing when click on the canvas (mouse down)
 canvas.addEventListener("mousedown", (e) => {
-  // Before start drawing, save the last version of the drawing into the canvasStorage variable
-  canvasStorage = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  // Before start drawing, save the last version of the drawing to the beginning of the canvasStorage array
+  canvasStorage.unshift(ctx.getImageData(0, 0, canvas.width, canvas.height));
   isDrawing = true;   // Enable drawing
   [lastX, lastY] = [e.offsetX, e.offsetY];
 });
@@ -129,7 +129,8 @@ canvas.addEventListener("mouseout", () => isDrawing = false);
 // CURRENTLY ONLY ABLE TO UNDO THE 1 LAST STEP >> FIX THIS
 undo.addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.putImageData(canvasStorage, 0, 0);
+  ctx.putImageData(canvasStorage[0], 0, 0);   // Restore the canvas to the latest saved version, ie the one at the beginning of the canvasStorage array
+  canvasStorage.shift();    // Remove the restored version from the array, so that next time the user clicks the Undo button it will restore to the next most recent version
 });
 
 // Enable redo button
