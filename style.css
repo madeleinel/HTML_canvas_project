@@ -1,7 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: Verdana, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 /*////////////////////////////////////////////////*/
@@ -14,8 +14,10 @@ header {
 
 h1 {
   color: #fff;
-  font-size: 3.5em;
+  font-size: 4.5em;
   text-align: center;
+  font-family: 'Oleo Script', cursive;
+  margin-top: 0.4em;
 }
 
 /* Done styling the header */
@@ -86,15 +88,37 @@ em {
 }*/
 
 input[type=color] {
+  opacity: 0;
   display: inline-block;
   border: none;
   background: none;
-  height: 4em;
+  height: 3rem;
   width: 45%;
+  position: relative;
+  z-index: 99;
 }
 
 input[type=color]:focus {
   outline: none;
+}
+
+input[type=color]+span {
+  display: inline-block;
+  height: 2.4rem;
+  width: 38%;
+  border-radius: 0.25em;
+  margin-left: -5.5em;
+  margin-top: 0.3em;
+  position: absolute;
+  z-index: 1;
+}
+
+#backgroundSelector+span {
+  background-color: #fff;
+}
+
+#colorSelector+span {
+  background-color: #000;
 }
 
 /* Styling the brush width chooser */

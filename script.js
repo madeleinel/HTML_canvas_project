@@ -50,6 +50,10 @@ const numOfColorEffects = colorEffectOptions.length;
 // For the background colour:
 const backgroundChange = document.getElementById("backgroundSelector");
 
+// For the background and brush colour HTML input elements:
+const brushColorInput = document.querySelector("#colorSelector+span");
+const backgroundColorInput = document.querySelector("#backgroundSelector+span");
+
 // Define the variable that will store the brushstroke image data
 let canvasStorage = [];
 // Define the variable that will store the background image data
@@ -79,7 +83,10 @@ function draw(e) {
 }
 
 // Define function to enable changing the colour of brush strokes
-colorChange.addEventListener("change", (e) => color = e.srcElement.value);
+colorChange.addEventListener("change", (e) => {
+  color = e.srcElement.value;
+  brushColorInput.style.backgroundColor = color;    // Updates the colour of the input field for the brush colour selector
+});
 // Define function to enable changing the width of brush strokes
 widthChange.addEventListener("change", (e) => strokeWidth = e.srcElement.value);
 // Define function to enable changing the brush shape effect
@@ -104,6 +111,7 @@ backgroundChange.addEventListener("change", (e) => {
   backgroundColor = e.srcElement.value;
   backCtx.fillStyle = backgroundColor;
   backCtx.fillRect(0, 0, background.width, background.height);
+  backgroundColorInput.style.backgroundColor = backgroundColor;   // Updates the colour of the input field for the background colour selector
 });
 
 //////// Enable the drawing ////////
@@ -144,8 +152,6 @@ redo.addEventListener("click", () => {
 save.addEventListener("click", () => {
   console.log("Save this to a file");
 });
-
-
 
 // To create rainbow effect in the brush colour:
 // let hue;
