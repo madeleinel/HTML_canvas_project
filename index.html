@@ -13,20 +13,30 @@
   <header><h1>Let's Paint!</h1></header>
 
   <div id="controls">
-    <h2>Options</h2>
+    <!-- <h2>Options</h2> -->
 
-    <button id="undo">Undo</button>
-    <button id="redo">Redo</button>
-    <button id="save">Save</button>
+    <div id="options">
+      <button id="undo">Undo</button>
+      <button id="redo">Redo</button>
+      <button id="save">Save</button>
+    </div>
 
-    <div class="selectorArea" id="backgroundSelectorArea">
+    <!-- <div class="selectorArea" id="backgroundSelectorArea">
       <label for="backgroundColour">Background colour: </label>
-      <input type="color" id="backgroundSelector" name="backgroundColour" value="#ffffff"></br>    <!-- Colour values specified does not affect the brush colour, just the colour of the input field -->
+      <input type="color" id="backgroundSelector" name="backgroundColour" value="#ffffff"></br>
     </div>
 
     <div class="selectorArea" id="colorSelectorArea">
       <label for="colour">Brush colour: </label>
-      <input type="color" id="colorSelector" name="brushColour" value="#000000"></br>    <!-- Colour values specified does not affect the background colour, just the colour of the input field -->
+      <input type="color" id="colorSelector" name="brushColour" value="#000000"></br>
+    </div> -->
+
+    <div class="selectorArea" id="colorSelectorArea">
+      <!-- <h2>Colour</h2> -->
+      <label for="backgroundColour">Background: </label>
+      <label for="colour">Brush: </label>
+      <input type="color" id="backgroundSelector" name="backgroundColour" value="#ffffff">    <!-- Colour values specified does not affect the brush colour, just the colour of the input field -->
+      <input type="color" id="colorSelector" name="brushColour" value="#000000">    <!-- Colour values specified does not affect the background colour, just the colour of the input field -->
     </div>
 
     <div class="selectorArea" id="lineWidthSelectorArea">
