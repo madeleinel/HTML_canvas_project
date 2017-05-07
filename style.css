@@ -1,25 +1,23 @@
 html, body {
   margin: 0;
-  text-align: center;
-  font-family: Verdana;
-  font-size: 14px;
-  overflow: hidden;
+  padding: 0;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 /*////////////////////////////////////////////////*/
 /* Styling the header */
 header {
-  height: 18.5vh;
+  height: 18.1vh;
+  background-color: #76a4c0;
+  padding-top: 0.1em;
 }
 
 h1 {
-  background-color: tomato;
-  color: white;
-  font-size: 4em;
-  margin: 0;
-  padding: 0.6em;
-  /*min-height: 10vh;*/
-  max-height: 18vh;
+  color: #fff;
+  font-size: 4.5em;
+  text-align: center;
+  font-family: 'Oleo Script', cursive;
+  margin-top: 0.4em;
 }
 
 /* Done styling the header */
@@ -29,60 +27,151 @@ h1 {
 /* Styling the controls section */
 
 #controls {
-  background-color: papayawhip;
+  background-color: #edf2f9;
   position: fixed;
-  top: 0;
+  top: 18.4vh;
   left: 0;
-  padding: 9em 0;
   height: 100%;
-  /*min-width: 20vw;*/
-  max-width: 20vw;
-  z-index: -99;
+  width: 20vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.column {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+#options {
+  text-align: center;
 }
 
 .selectorArea {
-  border: 0px solid purple;
-  display: inline-block;
-  text-align: center;
-  padding: 1em 0;
-  /*max-height: inherit;*/
-  max-width: 18vw;
+  background-color: #b0cbdb;
+  margin: 1em 0;
+  padding: 0.8em 0.5em 0.5em 0.8em;
+  max-width: 100%;
+}
+
+#colorSelectorArea {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 1em;
+}
+
+button {
+  border: none;
+  border-radius: 0.25em;
+  background-color: #fff;
+  min-width: 4em;
+  padding: 0.5em;
+  margin: 2em 0.5em 0.5em 0.5em;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
 }
 
 label {
-  border: 0px solid blue;
-  display: inline-block;
+  /*border: 1px solid red;*/
+  font-size: 1.2em;
+  margin: 0 0 0 0.2em;
+  /*margin-right: 2em;*/
 }
 
 input {
   cursor: pointer;
-  max-width: 18vw;
 }
 
-/* Styling the colour chooser */
+em {
+  font-style: normal;
+  margin-left: 1.5em;
+}
+
 input[type=color] {
-  background: none;
+  opacity: 0;
+  display: inline-block;
   border: none;
-  /*border-radius: 50%;*/
-  height: 4rem;
-  width: 4rem;
-  padding: 0 0 0 0.2rem;
-  transform: translateY(0.3rem)
+  background: none;
+  height: 3rem;
+  width: 7rem;
+  position: relative;
+  z-index: 99;
 }
 
 input[type=color]:focus {
   outline: none;
 }
 
+input[type=color]+span {
+  height: 2.4rem;
+  width: 6.6rem;
+  border-radius: 0.25em;
+  margin: -2.8em 0 0 0.3em;
+  z-index: 1;
+}
+
+#backgroundSelector+span {
+  background-color: #fff;
+}
+
+#colorSelector+span {
+  background-color: #000;
+}
+
 /* Styling the brush width chooser */
 input[type=range] {
-  /*msaamsl;*/
 }
 
 /* Styling the effect list */
+ul {
+}
+
 ul li {
   list-style: none;
-  margin-left: -3em;
+  margin-left: -1em;
+  line-height: 1.5em;
+}
+
+input[type=radio] {
+  opacity: 0;
+  position: absolute;
+  z-index: 99;
+  margin: 0.4em 0 0 0.2em;
+}
+
+input[type=radio]+span {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 0.25em;
+  background-color: #fff;
+  margin-top: 0.2em;
+  position: absolute;
+  z-index: 1;
+}
+
+input[type=radio]:checked+span:before {
+  content: "✓";
+  display: block;
+  margin-left: 0.15em;
+  margin-top: -0.15em;
 }
 
 /* Done styling the controls */
