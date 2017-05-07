@@ -22,7 +22,7 @@ background.style.left = "20vw";
 
 // Set the default brushstroke values
 // Don't need to set these for the background canvas, as will not be drawing on that canvas
-ctx.lineJoin = "round";   // Set the default style of brushstoke joints  // round / square / butt
+// ctx.lineJoin = "round";   // Set the default style of brushstoke joints  // round / square / butt / miter (default)
 ctx.lineCap = "round";    // Set the default style of brushstoke ends  // round / square / butt
 ctx.globalCompositeOperation = "source-over";   // Set the default brushstroke effect
 
